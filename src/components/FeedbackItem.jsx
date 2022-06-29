@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../shared/card/Card'
+import Card from './Card'
 import PropTypes from 'prop-types';
 import { FaTimes } from 'react-icons/fa'
 
