@@ -14,6 +14,8 @@ function App() {
     if (window.confirm('Are you sure you want to delete')) {
       // we filter our array to keep items that don't match the id that
       // we want to delete
+      // or we filter  through only the items with ids different than
+      // the id that we want to delete
       setFeedback(feedback.filter(item => item.id != id))
     }
   }
