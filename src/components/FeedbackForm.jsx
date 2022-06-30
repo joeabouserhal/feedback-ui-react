@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import Card from './shared/Card'
 import Button from './shared/Button'
+import RatingSelect from './RatingSelect'
 
-const FeedbackForm = () => {
+const FeedbackForm = ({handleAdd}) => {
 
   const [text, setText] = useState('')
+  const [rating, setRating] = useState(10)
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [message, setMessage] = useState('')
 
@@ -28,9 +30,21 @@ const FeedbackForm = () => {
     setText(e.target.value)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (text.trim().length > 10) {
+      const newFeedback = {
+        text,
+        rating
+      }
+      handleAdd(newFeedback)
+      setText('')
+    }
+  }
+
   return (
     <Card>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>How would you rate</h2>
         {/* TODO: Rating select bar */}
         <div className="input-group">
@@ -44,6 +58,7 @@ const FeedbackForm = () => {
           {/* if there is a message, display it */}
         </div>
         {message && <p className='message'>{message}</p>}
+        <RatingSelect select={(rating) => { setRating(rating) }} />
       </form>
     </Card>
   )
