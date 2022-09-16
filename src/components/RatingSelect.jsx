@@ -1,25 +1,31 @@
-import {useState} from 'react'
-import PropTypes from 'prop-types'
+import { useState, useContext, useEffect } from "react";
+import PropTypes from "prop-types";
 
-const RatingSelect = ({select}) => {
+import FeedbackContext from "../context/FeedbackContext";
 
-const [selected, setSelected] = useState(10)
+const RatingSelect = ({ select }) => {
+  const [selected, setSelected] = useState(10);
+  const { feedbackEdit } = useContext(FeedbackContext);
 
-const handleChange = (e) => {
+  useEffect(() => {
+    setSelected(feedbackEdit.item.rating);
+  }, [feedbackEdit]);
+
+  const handleChange = (e) => {
     // we added a + before the value to turn into a number
     // for the selection to work
-    setSelected(+e.target.value)
-    select(+e.target.value)
-}
+    setSelected(+e.target.value);
+    select(+e.target.value);
+  };
 
   return (
-    <ul className='rating'>
+    <ul className="rating">
       {Array.from({ length: 10 }, (_, i) => (
         <li key={`rating-${i + 1}`}>
           <input
-            type='radio'
+            type="radio"
             id={`num${i + 1}`}
-            name='rating'
+            name="rating"
             value={i + 1}
             onChange={handleChange}
             checked={selected === i + 1}
@@ -28,14 +34,13 @@ const handleChange = (e) => {
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
-RatingSelect.defaultProps = {
-}
+RatingSelect.defaultProps = {};
 
 RatingSelect.propTypes = {
-    select: PropTypes.func.isRequired
-}
+  select: PropTypes.func.isRequired,
+};
 
-export default RatingSelect
+export default RatingSelect;
