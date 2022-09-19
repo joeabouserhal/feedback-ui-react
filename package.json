@@ -2,13 +2,17 @@
   "name": "feedback-ui-react",
   "private": true,
   "version": "0.0.0",
+  "proxy":"http://localhost:5000",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch db.json --port 5000",
+    "full-dev": "concurrently \"npm run server\" \"npm run dev\""
   },
   "dependencies": {
     "framer-motion": "^6.3.16",
+    "json-server": "^0.17.0",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -20,6 +24,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^1.3.0",
-    "vite": "^2.9.9"
+    "@vitejs/plugin-react-refresh": "^1.3.6",
+    "vite": "^3.1.2"
   }
 }
