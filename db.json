@@ -6,14 +6,24 @@
       "id": 1
     },
     {
-      "rating": "9",
       "text": "Hello there this is a test feedback added",
+      "rating": 5,
       "id": 4
     },
     {
       "text": "this is a test using context",
       "rating": 6,
       "id": 5
+    },
+    {
+      "text": "Hi hello there",
+      "rating": 2,
+      "id": 6
+    },
+    {
+      "text": "this is a 9 out of 10 rating",
+      "rating": 9,
+      "id": 7
     }
   ]
 }

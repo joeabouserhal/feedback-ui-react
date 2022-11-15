@@ -11,6 +11,10 @@ const RatingSelect = ({ select }) => {
     setSelected(feedbackEdit.item.rating);
   }, [feedbackEdit]);
 
+  useEffect(() => {
+    setSelected(10);
+  }, []);
+
   const handleChange = (e) => {
     // we added a + before the value to turn into a number
     // for the selection to work
