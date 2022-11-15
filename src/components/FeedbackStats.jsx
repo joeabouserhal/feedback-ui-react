@@ -9,13 +9,12 @@ const FeedbackStats = () => {
   // to current value ex:
   // 0+1 = 1 new cumulative sum => 1+1= 2 new acc => 2+1= 3 new acc ...
   let average =
-    feedback.reduce((acc, cur) => {
-      return acc + cur.rating;
-    }, 0) / feedback.length;
+    Number(feedback.reduce((acc, cur) => {
+      return acc + Number(cur.rating);
+    }, 0) / feedback.length).toFixed(1).replace(/'[.,]0$'/, "");
 
   // this function lets it so average only has one decimal point
   // and in case we are left with x.0 we round it to x
-  average.toFixed(1).replace(/'[.,]0$'/, "");
 
   return (
     <div className="feedback-stats">
